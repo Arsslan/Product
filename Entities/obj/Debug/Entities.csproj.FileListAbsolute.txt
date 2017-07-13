@@ -1,0 +1,15 @@
+C:\Users\malik usman\documents\visual studio 2013\Projects\Assignment5\Entities\bin\Debug\Entities.dll
+C:\Users\malik usman\documents\visual studio 2013\Projects\Assignment5\Entities\bin\Debug\Entities.pdb
+C:\Users\malik usman\documents\visual studio 2013\Projects\Assignment5\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+C:\Users\malik usman\documents\visual studio 2013\Projects\Assignment5\Entities\obj\Debug\Entities.dll
+C:\Users\malik usman\documents\visual studio 2013\Projects\Assignment5\Entities\obj\Debug\Entities.pdb
+C:\Users\malik usman\Downloads\Compressed\MCSF15M043_Assignment5\Entities\bin\Debug\Entities.dll
+C:\Users\malik usman\Downloads\Compressed\MCSF15M043_Assignment5\Entities\bin\Debug\Entities.pdb
+C:\Users\malik usman\Downloads\Compressed\MCSF15M043_Assignment5\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+C:\Users\malik usman\Downloads\Compressed\MCSF15M043_Assignment5\Entities\obj\Debug\Entities.dll
+C:\Users\malik usman\Downloads\Compressed\MCSF15M043_Assignment5\Entities\obj\Debug\Entities.pdb
+C:\Users\Arxlan\Desktop\proj\MCSF15M043_Assignment6\Entities\bin\Debug\Entities.dll
+C:\Users\Arxlan\Desktop\proj\MCSF15M043_Assignment6\Entities\bin\Debug\Entities.pdb
+C:\Users\Arxlan\Desktop\proj\MCSF15M043_Assignment6\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+C:\Users\Arxlan\Desktop\proj\MCSF15M043_Assignment6\Entities\obj\Debug\Entities.dll
+C:\Users\Arxlan\Desktop\proj\MCSF15M043_Assignment6\Entities\obj\Debug\Entities.pdb

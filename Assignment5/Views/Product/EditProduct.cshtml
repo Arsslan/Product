@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "EditProduct";
+}
+
+<h2>EditProduct</h2>
+@section scr
+{
+    <script src="~/Scripts/AddParductScript.js"></script>
+}
+@section admin
+{
+     @Session["admin"]
+}
+<body>
+    <form class="form-group" method="post" action="" enctype="multipart/form-data">
+        <div class="active">
+            <h2> Name : </h2><input type="text" name="name" id="name" value= @ViewBag.producut.Name><br>
+            <h2>Price:</h2><input type="text" name="price"id="price" value=@ViewBag.producut.Price><br>
+            <h2>Type</h2>
+            @Html.DropDownList("TypeId", ViewBag.listoftypes as SelectList, "---Please Select Type-----")
+            <h2>Description:</h2><input type="text" name="description"id="description" value=@ViewBag.producut.Description><br>
+            <br>
+            <input type="file" name="picture"  />
+            <input type="hidden" name="picture" value="@ViewBag.producut.picture"><br>
+            <br>
+            <input type="submit" value=" EditProduct" name="addproduct" onclick="Validate()"/>
+        </div>
+    </form>
+</body>

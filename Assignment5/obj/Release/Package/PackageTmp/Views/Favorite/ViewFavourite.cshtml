@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "ViewFavourite";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+<body>  
+    <form action="" method="post" enctype="multipart/form-data">
+        @foreach (var a in ViewBag.favoritelist)
+        {
+        <div class="box">
+            <img src="~/Content/Images/@a.picture" width="150" /><br>
+            <span>Price: @a.Price</span><br>
+            <span>Type:@a.temp</span><br>
+            <span> Name:@a.Name</span><br>
+            <span>Description: @a.Description</span><br>
+            <br>
+        </div>
+        }
+    </form>
+</body>
+
+@section admin
+{
+    @Session["admin"]
+}
+
+@section user
+{
+    @Session["user"]
+}
+
+
+
+

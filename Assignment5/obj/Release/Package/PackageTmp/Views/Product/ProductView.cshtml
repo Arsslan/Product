@@ -1,0 +1,175 @@
+﻿
+<body>     
+    <form action="/Product/SearchResults" method="post" enctype="multipart/form-data">
+        <br>
+        <div class="input-append" align="right">
+            <input type="text" class="input-medium search-query" name="txtsearch" id="txtsearch" placeholder="Search" value="">
+            <input type="submit" class="add-on" id="search" name="search" value="Search" onclick="showsearchresult()" />
+        </div>
+        </form>
+        @{
+            ViewBag.Title = "ProductView";
+            Layout = null;
+            if (Session["user"] != null)
+            {
+                Layout = "~/Views/Shared/_userLayout.cshtml";
+                var user = Session["user"].ToString();
+               foreach (var a in ViewBag.productlistindatabase)
+                {
+                     double total=0;
+                     double obt=0;
+                     double rate=0.0;
+                    int count = 0;
+                    <form action="/Product/ProductView1/@a.ProductId" method="post" enctype="multipart/form-data">
+
+                        <div class="box">
+
+                            <img src="~/Content/Images/@a.picture" width="150" /><br>
+                            <span>Price: @a.Price</span><br>
+                            <input type="hidden" id="userid" value="@Session["UserId"]" />
+                            <span>Type:@a.temp</span><br>
+                            <span> Name:@a.Name</span><br>
+                            <span style="display:none" id="ppid">@a.ProductId</span>
+                            <span>Description: @a.Description</span><br>
+                            
+                            @foreach (var productrate in ViewBag.rating)
+                            {
+                                var id = a.ProductId;
+                               if(productrate.ProductId==id)
+                                {
+                                    total=total+productrate.TotalPoint;
+                                   obt=obt+productrate.ObtainedPoint;
+                                }
+                                
+                            }
+                            @{
+                               if(total!=0)
+                               {
+                                   rate = obt*5/total;
+                               }                                                           
+                              }
+                          
+                            <h4>Ratings:@Math.Round(rate, 1)/5</h4>
+                            <input type="submit" value="Send Email To Friend" name="email" class="alert" onclick="SendEmail(this)" />
+                            <textarea rows="3" cols="25" placeholder="Comment" name="txtcomment" id="txtcomment"></textarea>
+                            <input type="button" value="Comment" id="Comment" name="Comment" class="alert" onclick="comment(this)" /><br>
+                            @foreach (var cmt in ViewBag.comment)
+                            {
+                                if (cmt.pid == a.ProductId)
+                                {
+                                    count++;
+                                    if (count > 2)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        <img width=100 height=80 src="/Content/Images/@cmt.Image">
+                                        <h3>@cmt.name </h3>
+                                        <p> @cmt.commentstring</p>
+                                    }
+                                }
+
+                            }
+                            <div id="commentblock" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+
+
+                                </div>
+                            </div>
+                            <div class="container">
+                                <button onclick="loadmore(this)" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+                                    Showw all comments
+                                </button>
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Comments</h4>
+                                            </div>
+                                            <div class="modal-body">
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="submit" id="addtofavourite" name="adtofavourite" class="alert-success" value="Add Favourite" onclick="AddtoFavourite(this)" /><br><br>
+                            <span id="ratingresult"></span>
+                            <h2>Rate This</h2>
+                            <input type="submit" id="0" value="0" class="alert-success" onclick="Rate(this)"/>
+                            <input type="submit" id="1" value="1" class="alert-success" onclick="Rate(this)" />
+                            <input type="submit" id="2" value="2" class="alert-success" onclick="Rate(this)" />
+                            <input type="submit" id="3" value="3" class="alert-success" onclick="Rate(this)" />
+                            <input type="submit" id="4" value="4" class="alert-success" onclick="Rate(this)" />
+                            <input type="submit" id="5" value="5" class="alert-success" onclick="Rate(this)" />
+                            <br>
+                        </div>
+                    </form>
+                }
+            }
+            else if (Session["admin"] != null)
+            {
+                Layout = "~/Views/Shared/_Layout.cshtml";
+
+                foreach (var a in ViewBag.productlistindatabase)
+                {
+
+                    <form action="/Product/ProductView1/@a.ProductId" method="post" enctype="multipart/form-data">
+
+                        <div class="box">
+                            <img src="~/Content/Images/@a.picture" width="150" /><br>
+                            <span>Price: @a.Price</span><br>
+                            <span>Type:@a.temp</span><br>
+                            <span> Name:@a.Name</span><br>
+                            <span>Description: @a.Description</span><br>
+                            <input type="submit" value="Delete" name="delete" class="btn-danger" />
+                            <input type="submit" value="Update" name="edit" class="alert-success" />
+                            <br>
+
+                        </div>
+                    </form>
+                }
+            }
+            else
+            {
+                Layout = "~/Views/Shared/_CommonUser.cshtml";
+                foreach (var a in ViewBag.productlistindatabase)
+                {
+
+                    <form action="/Product/ProductView1/@a.ProductId" method="post" enctype="multipart/form-data">
+
+                        <div class="box">
+                            <img src="~/Content/Images/@a.picture" width="150" /><br>
+                            <span>Price: @a.Price</span><br>
+                            <span>Type:@a.temp</span><br>
+                            <span> Name:@a.Name</span><br>
+                            <span>Description: @a.Description</span><br>
+                            <br>
+                        </div>
+                    </form>
+                }
+            }
+        }
+        <span>@ViewBag.error</span>
+</body>
+
+@section admin
+{
+     @Session["admin"]
+}
+
+@section user
+{
+     @Session["user"]
+}
+
+
+
+
+

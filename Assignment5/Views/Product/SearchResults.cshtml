@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "ViewFavourite";
+    Layout = null;
+}
+<head>
+    <link href="~/Content/bootstrap-new.css" rel="stylesheet" />
+</head>
+<h2>Search Results</h2>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        @foreach (var a in ViewBag.searched)
+        {
+            <div class="box">
+                <img src="~/Content/Images/@a.picture" width="150" /><br>
+                <span>Price: @a.Price</span><br>
+                <span>Type:@a.temp</span><br>
+                <span> Name:@a.Name</span><br>
+                <span>Description: @a.Description</span><br>
+                <br>
+            </div>
+        }
+    </form>
+</body>
+
+
+
+

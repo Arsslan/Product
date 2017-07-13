@@ -1,0 +1,90 @@
+﻿<body>
+    
+        @{
+    ViewBag.Title = "ProductView";
+    Layout = null;
+    if (Session["User"] != null)
+    {
+        Layout = "~/Views/Shared/_userLayout.cshtml";
+
+        foreach (var a in ViewBag.productlistindatabase)
+        {
+
+            <form action="/Product/ProductView1/@a.ProductId" method="post" enctype="multipart/form-data">
+
+                <div class="box">
+                    <img src="@a.picture" width="150" /><br>
+                    <span>Price: @a.Price</span><br>
+                    <span>Type:@a.temp</span><br>
+                    <span> Name:@a.Name</span><br>
+                    <span>Description: @a.Description</span><br>
+                    <input type="submit" value="Send Email To Friend"name="email" class="alert"/>
+                    <br>
+
+                </div>
+            </form>
+        }
+    }
+    else  if (Session["admin"] != null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+        foreach (var a in ViewBag.productlistindatabase)
+        {
+
+            <form action="/Product/ProductView1/@a.ProductId" method="post" enctype="multipart/form-data">
+
+                <div class="box">
+                    <img src="@a.picture" width="150" /><br>
+                    <span>Price: @a.Price</span><br>
+                    <span>Type:@a.temp</span><br>
+                    <span> Name:@a.Name</span><br>
+                    <span>Description: @a.Description</span><br>
+                    <input type="submit" value="Delete" name="delete" class="btn-danger" />
+                    <input type="submit" value="Update" name="edit"class="alert-success"/>
+                    <br>
+
+                </div>
+            </form>
+        }
+    }
+     else
+     {
+         Layout = "~/Views/Shared/_CommonUser.cshtml";
+         foreach (var a in ViewBag.productlistindatabase)
+        {
+
+            <form action="/Product/ProductView1/@a.ProductId" method="post" enctype="multipart/form-data">
+
+                <div class="box">
+                    <img src="@a.picture" width="150" /><br>
+                    <span>Price: @a.Price</span><br>
+                    <span>Type:@a.temp</span><br>
+                    <span> Name:@a.Name</span><br>
+                    <span>Description: @a.Description</span><br>
+                    
+                    <br>
+
+                </div>
+            </form>
+        }
+     }
+}
+                
+   <span>@ViewBag.error</span>     
+</body>
+
+@section admin
+{
+     @Session["admin"]
+}
+
+@section user
+{
+     @Session["user"]
+}
+
+
+
+
+

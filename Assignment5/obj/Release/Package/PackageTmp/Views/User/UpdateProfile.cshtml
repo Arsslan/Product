@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "UpdateProfile";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+@section user
+{
+    @Session["User"]
+}
+@section scr
+{
+    <script src="~/Scripts/AddParductScript.js"></script>
+}
+<h2>UpdateProfile</h2>
+<body>
+    <form class="form-group" method="post" action="" enctype="multipart/form-data">
+        <div class="active">
+            <h2> Name : </h2><input type="text" name="name" id="name"value="@ViewBag.user.Name"><br>
+            <h2>Passward:</h2><input type="password" name="password"id="password"><br>
+            <h2>Login:</h2><input type="text" name="login" id="login"value="@ViewBag.user.Login"><br>
+            <input type="hidden" name="picurl" value="@ViewBag.user.PicUrl" />
+            <br>
+            <input type="file" name="picurl" id="picture">
+            <br>
+            <br>
+            <input type="submit" value=" Signup" name="signup" onclick="ValidateUpdatio()" />
+            <br>
+            <br>
+            <h3>@ViewBag.error</h3>
+            <h3>@ViewBag.missing</h3>
+        </div>
+    </form>
+</body>
+
